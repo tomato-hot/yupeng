@@ -1,0 +1,51 @@
+.aside::-webkit-scrollbar {
+  display: none;
+}
+
+.avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+img {
+  vertical-align: middle;
+}
+
+.header {
+  margin-left: 16px;
+  border-radius: 0 0 16px 16px;
+  background-color: #fff;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.header > div,
+.header > label {
+  padding: 0 16px;
+  height: 100%;
+  line-height: 64px;
+  cursor: pointer;
+}
+
+.header > div:hover {
+  background-color: #f0f0f0;
+}
+
+.logo {
+  height: 130px;
+  line-height: 130px;
+  text-align: center;
+}
+
+.toggle {
+  font-size: 22px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  box-sizing: border-box;
+}
