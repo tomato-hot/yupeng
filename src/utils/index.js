@@ -17,7 +17,6 @@ export function getRoutes(list){
     })
     return temp;
 }
-
 // 头部标签
 // 递归查找 单击菜单的url也就是e 在vuex中菜单对应项item
 export function findItem(url, list) {

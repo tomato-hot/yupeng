@@ -122,7 +122,11 @@
           </template>
         </el-table-column>
         <el-table-column label="操作">
-          <template> 订单详情 </template>
+          <template slot-scope="scope">
+            <el-button @click="orderDetail(scope)" :style="{ color: 'blue' }">
+              订单详情</el-button
+            >
+          </template>
         </el-table-column>
       </el-table>
       <div class="block">
@@ -156,15 +160,16 @@ export default {
       pagination: {}, //分页数据
       search: { status: "", orderNum: "" }, //查询条件
       activeName: "second",
-      excel:[],
-      json_fields: {              //表头设计
-        "订单编号":"OrderNum",
-          "下单日期": "createAt",
-          "会员账号": "customerId",
-          "订单总额": "refunded_amount",
-          "所属门店": "shoppingAdd",
-          "订单状态": "status",
-        },
+      excel: [],
+      json_fields: {
+        //表头设计
+        订单编号: "OrderNum",
+        下单日期: "createAt",
+        会员账号: "customerId",
+        订单总额: "refunded_amount",
+        所属门店: "shoppingAdd",
+        订单状态: "status",
+      },
     };
   },
 
@@ -176,15 +181,15 @@ export default {
     this.getOrderList();
   },
   methods: {
-    text() {
-      console.log(1,"测试导出按钮");
-      console.log(this.excel);
+    orderDetail(e) {
+      this.$router.push("/admin/orderdetail/"+e.row.OrderNum)
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.getOrderList();
-        } else {1
+        } else {
+          1;
           console.log("error submit!!");
           return false;
         }
@@ -204,7 +209,7 @@ export default {
       GetOrderList(this.search)
         .then((res) => {
           this.orderList = res.data.data;
-          this.excel= res.data.data
+          this.excel = res.data.data;
           this.pagination = res.data.pagnation;
           this.pagination.current = this.pagnation.current * 1;
           this.pagination.size = this.pagnation.size * 1;
